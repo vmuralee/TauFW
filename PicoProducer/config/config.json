@@ -7,8 +7,6 @@
     "ditau": "ModuleTauTau"
   }, 
   "eras": {
-    "2016": "examples/samples_2016.py", 
-    "2017": "examples/samples_2017.py", 
     "2018": "examples/sample_HTT_2018.py"
   }, 
   "nfilesperjob": 1, 
