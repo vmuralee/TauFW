@@ -292,7 +292,7 @@ def getmetfilters(era,isdata,verb=0):
   if isdata:
     filters.extend(['Flag_eeBadScFilter']) # eeBadScFilter "not suggested" for MC
   if ('2017' in era or '2018' in era) and ('UL' not in era):
-    filters.extend(['Flag_ecalBadCalibFilterV2']) # under review for change in Ultra Legacy
+    filters.extend(['Flag_ecalBadCalibFilter']) # under review for change in Ultra Legacy
   funcstr = "func = lambda e: e."+' and e.'.join(filters)
   if verb>=1:
     LOG.verb(">>> getmetfilters: %r"%(funcstr))

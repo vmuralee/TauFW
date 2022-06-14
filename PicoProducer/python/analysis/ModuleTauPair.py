@@ -12,6 +12,7 @@ from TauFW.PicoProducer.corrections.RecoilCorrectionTool import *
 from TauFW.PicoProducer.corrections.BTagTool import BTagWeightTool, BTagWPs
 from TauFW.common.tools.log import header
 from TauFW.PicoProducer.analysis.utils import ensurebranches, redirectbranch, deltaPhi, getmet, getmetfilters, correctmet, getlepvetoes
+from TauFW.PicoProducer.analysis.TreeProducerTauPair import *
 __metaclass__ = type # to use super() with subclasses from CommonProducer
 tauSFVersion  = { 2016: '2016Legacy', 2017: '2017ReReco', 2018: '2018ReReco' }
 
@@ -47,7 +48,7 @@ class ModuleTauPair(Module):
     self.dosys      = kwargs.get('sys',      self.dosys     ) # store fewer branches to save disk space
     self.dotight    = self.tes not in [1,None] or not self.dosys # tighten pre-selection to store fewer events
     self.dotight    = kwargs.get('tight',    self.dotight   ) # store fewer events to save disk space
-    self.dojec      = kwargs.get('jec',      True           ) and self.ismc #and self.year==2016 #False
+    self.dojec      = kwargs.get('jec',      False           ) and self.ismc #and self.year==2016 #False
     self.dojecsys   = kwargs.get('jecsys',   self.dojec     ) and self.ismc and self.dosys #and self.dojec #and False
     self.useT1      = kwargs.get('useT1',    False          ) # MET T1
     self.verbosity  = kwargs.get('verb',     0              ) # verbosity
@@ -84,6 +85,7 @@ class ModuleTauPair(Module):
       if self.isUL and self.tes==None:
         self.tes = 1.0 # placeholder
     
+    self.out = TreeProducerTauPair(fname,self)
     self.deepjet_wp = BTagWPs('DeepJet',era=self.era)
     
   
