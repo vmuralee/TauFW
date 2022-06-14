@@ -2,8 +2,7 @@
   "channels": {
     "skim": "skimjob.py", 
     "skim-jec": "skimjob.py --jec-sys", 
-    "gen": "GenDumper", 
-    "mutau": "ModuleMuTauSimple", 
+    "gen": "GenDumper",
     "skimjec": "skimjob.py -y 2018 --jec-sys", 
     "ditau": "ModuleTauTau"
   }, 
